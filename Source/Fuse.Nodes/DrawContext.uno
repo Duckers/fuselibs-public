@@ -364,14 +364,44 @@ namespace Fuse
 			_cullFace = _cullFaces.RemoveLast();
 		}
 
+		static double accTime = 0;
+		static int lastFrame = 0;
+		static int calls = 0;
+		static double min = 1;
+		static double max = -1;
+		static List<double> t = new List<double>();
+
 		void CheckGLError([CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string memberName = "")
 		{
+			double d = Uno.Diagnostics.Clock.GetSeconds();
+			calls++;
+
 			if defined(OPENGL)
 			{
 				var e = GL.GetError();
 				if (e != GLError.NoError)
 					Fuse.Diagnostics.InternalError("" + e, this, filePath, lineNumber, memberName);
 			}
+
+			d = Uno.Diagnostics.Clock.GetSeconds() - d;
+			accTime += d;
+
+			if (d < min) min = d;
+			if (d > max) max = d;
+			t.Add(d);
+
+			if (UpdateManager.FrameIndex != lastFrame)
+			{
+				debug_log "Time: " + (accTime * 1000.0) + ", average " + (accTime / calls * 1000);
+				foreach (var k in t) debug_log "  " + (k*1000.0);
+				accTime = 0;
+				calls = 0;
+				min = 1;
+				max = -1;
+				t.Clear();
+				lastFrame = UpdateManager.FrameIndex;
+			}
+
 		}
 
 		void GLInconsistent(string msg)
