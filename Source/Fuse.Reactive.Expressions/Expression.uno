@@ -34,6 +34,11 @@ namespace Fuse.Reactive
 		}
 	}
 
+	public sealed class Null: ConstantExpression
+	{
+		public override object GetValue(IContext context) { return null; }
+	}
+
 	public sealed class Name: ConstantExpression
 	{
 		public string Identifier { get; private set; }

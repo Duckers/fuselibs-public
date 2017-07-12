@@ -124,7 +124,7 @@ namespace Fuse.Reactive
 		[UXConstructor]
 		//due to https://github.com/fusetools/fuselibs/issues/4199 it's not possible yet to know if the default works
 		//so it's been commented out for now to avoid any unintended side-effects
-		public IndexFunction([UXParameter("Node")]/*[UXDefaultValue("null")]*/ Reactive.Expression node)
+		public IndexFunction([UXParameter("Node"), UXDefaultValue("null")] Reactive.Expression node)
 			: base( node, DataIndexName )
 		{
 		}
@@ -134,7 +134,7 @@ namespace Fuse.Reactive
 	public class OffsetIndexFunction : InstantiatorFunction
 	{
 		[UXConstructor]
-		public OffsetIndexFunction([UXParameter("Node")]/*[UXDefaultValue("null")]*/ Reactive.Expression node)
+		public OffsetIndexFunction([UXParameter("Node"), UXDefaultValue("null")] Reactive.Expression node)
 			: base( node, OffsetIndexName )
 		{
 		}
