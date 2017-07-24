@@ -50,10 +50,8 @@ namespace Fuse.Desktop
 			{
 				Internal.DrawManager.PrepareDraw(_dc);
 
-				EnsureSortedZOrder();
-
-				for (int i = 0; i < ZOrder.Count; i++)
-					ZOrder[i].Draw(_dc);
+				foreach (var v in ZOrder)
+					v.Draw(_dc);
 
 				AppBase.Current.DrawSelection(_dc);
 				

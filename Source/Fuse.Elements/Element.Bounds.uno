@@ -62,9 +62,9 @@ namespace Fuse.Elements
 			var r = VisualBounds.Empty;
 			if (HasVisualChildren)
 			{
-				for (int i = 0; i < ZOrder.Count; i++)
+				foreach (var v in ZOrder)
 				{
-					r = r.Merge(ZOrder[i].CalcRenderBoundsInParentSpace() );
+					r = r.Merge(v.CalcRenderBoundsInParentSpace() );
 				}
 			}
 			return r;

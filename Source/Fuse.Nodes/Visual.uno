@@ -34,6 +34,7 @@ namespace Fuse
 	*/
 	public abstract partial class Visual : Node, IList<Node>, IPropertyListener, ITemplateSource
 	{
+		public abstract void Draw(DrawContext dc);
 
 		public virtual VisualContext VisualContext 
 		{ 

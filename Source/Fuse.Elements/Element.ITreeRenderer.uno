@@ -18,7 +18,7 @@ namespace Fuse.Elements
 		void IsEnabledChanged(Element e, bool isEnabled);
 		void OpacityChanged(Element e, float opacity);
 		void ClipToBoundsChanged(Element e, bool clipToBounds);
-		void ZOrderChanged(Element e, List<Visual> zorder);
+		void ZOrderChanged(Element e, IEnumerable<Visual> zorder);
 		void HitTestModeChanged(Element e, bool enabled);
 		bool Measure(Element e, LayoutParams lp, out float2 size);
 	}
