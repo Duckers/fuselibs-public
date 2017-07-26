@@ -105,8 +105,14 @@ namespace Fuse
 				else if (v.Layer != layer) needsSorting = true;
 			}
 
+			debug_log "Before Sort: ";
+			foreach (var z in zOrder) debug_log(z);
+
 			if (needsSorting)
 				Array.Sort(zOrder, ZOrderComparator);
+
+			debug_log "After Sort: " + needsSorting;
+			foreach (var z in zOrder) debug_log(z);
 
 			for (var n = 0; n < zOrder.Length; n++)
 				if (!zOrder[n]._zOrderFixed) zOrder[n]._naturalZOrder = -i;
