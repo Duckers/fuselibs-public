@@ -431,7 +431,6 @@ namespace Fuse.Reactive.Test
 				root.StepFrameJS();
 				var oc = e.counterCollector.Children;
 				Assert.AreEqual(2, oc.Count);
-				System.Console.WriteLine(oc[0].GetType().FullName);
 
 				var counter1 = oc[1] as UX.Model.Counter;
 				Assert.AreNotEqual(null, counter1);
